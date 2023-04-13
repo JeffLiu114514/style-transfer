@@ -11,6 +11,14 @@ import net
 import time
 from function import adaptive_instance_normalization, coral
 
+unloader = transforms.ToPILImage()
+def imsave(tensor, filename='output'):
+    image = tensor.cpu().clone()
+    image = image.squeeze(0)
+    image = unloader(image)
+    image = image.save(filename)
+    return image
+
 
 def test_transform(size, crop):
     transform_list = []
@@ -165,4 +173,5 @@ for content_path in content_paths:
 
             output_name = output_dir / '{:s}_stylized_{:s}{:s}'.format(
                 content_path.stem, style_path.stem, args.save_ext)
-            save_image(output, str(output_name))
+            #save_image(output, str(output_name))
+            imsave(output, str(output_name))
