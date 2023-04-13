@@ -1,0 +1,5 @@
+python train.py --content_dir content_dir --style_dir style_dir --max_iter 1000 --save_model_interval 1000
+
+python test.py --content content_dir/dancing.jpg --style style_dir/picasso.jpg
+
+python test.py --content content_dir/content_dog.jpg --style style_dir/style_WK.jpg
